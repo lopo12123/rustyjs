@@ -14,7 +14,7 @@
     ],
     "scripts": {
         "build:dist": "tsc && vite build",
-        "build:doc": "typedoc lib/index.ts"
+        "build:doc": "typedoc lib/index.ts --readme none"
     },
     "devDependencies": {
         "@rollup/plugin-typescript": "^11.0.0",
