@@ -5,6 +5,12 @@
     "description": "Everything is rusted...",
     "repository": "https://github.com/lopo12123/rustyjs.git",
     "license": "MIT",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist",
+        "lib"
+    ],
     "scripts": {
         "build:dist": "tsc && vite build",
         "build:doc": "typedoc lib/index.ts"
