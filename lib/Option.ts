@@ -39,6 +39,8 @@ class JSOption<Value = any> {
     /**
      * @description Returns the contained Some value.
      * @throws {TypeError} Panics if the self value equals None.
+     * @see unwrap_or
+     * @see unwrap_or_else
      */
     public unwrap(): Value {
         if(this.is_some) return this.#v!
@@ -48,6 +50,8 @@ class JSOption<Value = any> {
 
     /**
      * @description Returns the contained Some value or a provided defaultValue.
+     * @see unwrap
+     * @see unwrap_or_else
      */
     public unwrap_or(defaultValue: Value): Value {
         return this.#v ?? defaultValue
@@ -55,6 +59,8 @@ class JSOption<Value = any> {
 
     /**
      * @description Returns the contained Some value or computes it from a closure.
+     * @see unwrap
+     * @see unwrap_or
      */
     public unwrap_or_else(closure: () => Value): Value {
         return this.#v ?? closure()
@@ -102,7 +108,7 @@ class JSOption<Value = any> {
 }
 
 /**
- * @description Option generator
+ * @description `Option` generator
  */
 class RustyOption {
     /**
@@ -118,7 +124,7 @@ class RustyOption {
     }
 
     /**
-     * @description match for Option
+     * @description match for `Option`
      */
     public static match<Value = any, SomeResult = any, NoneResult = any>(v: JSOption<Value>, onSome?: (v: Value) => SomeResult, onNone?: () => NoneResult): SomeResult | NoneResult | undefined {
         return v.is_some ? onSome?.(v.unwrap()) : onNone?.()
