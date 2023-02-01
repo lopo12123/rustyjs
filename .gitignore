@@ -16,7 +16,7 @@ auto_fad
 test
 
 node_modules
-dist
+# dist
 dist-ssr
 *.local
 
