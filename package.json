@@ -1,6 +1,5 @@
 {
     "name": "rustyjs",
-    "type": "module",
     "version": "1.0.0",
     "author": "lopo<lopo@zju.edu.cn>",
     "description": "Everything is rusted...",
