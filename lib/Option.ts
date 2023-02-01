@@ -1,6 +1,11 @@
 const _some = Symbol('JSOption.Some')
 const _none = Symbol('JSOption.None')
 
+/**
+ * @description rusty `Option` in Js
+ * @description Do not instantiate with this class directly, use class `RustyOption` to generate.
+ * @see RustyOption
+ */
 class JSOption<Value = any> {
     readonly #v: Value | null
     readonly #s: symbol
@@ -96,6 +101,9 @@ class JSOption<Value = any> {
     }
 }
 
+/**
+ * @description Option generator
+ */
 class RustyOption {
     /**
      * @description Some value of type Value.
@@ -117,5 +125,4 @@ class RustyOption {
     }
 }
 
-export type { JSOption }
-export { RustyOption }
+export { JSOption, RustyOption }

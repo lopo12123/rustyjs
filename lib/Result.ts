@@ -3,6 +3,11 @@ import { JSOption, RustyOption } from "./Option";
 const _ok = Symbol('JSResult.Ok')
 const _err = Symbol('JSResult.Err')
 
+/**
+ * @description rusty `Result` in Js
+ * @description Do not instantiate with this class directly, use class `RustyResult` to generate.
+ * @see RustyResult
+ */
 class JSResult<Ok = any, Err = any> {
     readonly #o?: Ok
     readonly #e?: Err
@@ -123,6 +128,9 @@ class JSResult<Ok = any, Err = any> {
     }
 }
 
+/**
+ * @description Result generator
+ */
 class RustyResult {
     /**
      * @description Contains the success value
@@ -142,5 +150,4 @@ class RustyResult {
     }
 }
 
-export type { JSResult }
-export { RustyResult }
+export { JSResult, RustyResult }
