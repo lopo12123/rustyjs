@@ -58,6 +58,7 @@ class JSResult<Ok = any, Err = any> {
 
     /**
      * @description Returns the contained Ok value. Because this function may panic, its use is generally discouraged.
+     * @throws {TypeError} Panics if the value is an Err.
      */
     public unwrap(): Ok {
         if(this.is_ok) return this.#o!
@@ -81,24 +82,27 @@ class JSResult<Ok = any, Err = any> {
 
     /**
      * @description Returns the contained Ok value. Because this function may panic, its use is generally discouraged.
+     * @throws {TypeError} Panics if the value is an Err with a custom panic message provided by message.
      */
-    public expect(msg: string): Ok {
+    public expect(message: string): Ok {
         if(this.is_ok) return this.#o!
 
-        throw new TypeError(msg)
+        throw new TypeError(message)
     }
 
     /**
      * @description Returns other if self is Err, otherwise returns the Ok value of self.
      */
-    public or(other: JSResult<Ok, Err>): JSResult<Ok, Err> {
+    public or<Err2 = any>(other: JSResult<Ok, Err2>): JSResult<Ok, Err2> {
+        // @ts-ignore
         return this.is_ok ? this : other
     }
 
     /**
      * @description Calls op if self is Err, otherwise returns the Ok value of self.
      */
-    public or_else(op: (e: Err) => JSResult<Ok, Err>): JSResult<Ok, Err> {
+    public or_else<Err2 = any>(op: (e: Err) => JSResult<Ok, Err2>): JSResult<Ok, Err2> {
+        // @ts-ignore
         return this.is_ok ? this : op(this.#e!)
     }
 
@@ -130,6 +134,9 @@ class RustyResult {
      */
     public static Err = <Err = any>(e: Err): JSResult<undefined, Err> => new JSResult<undefined, Err>(undefined, e, false)
 
+    /**
+     * @description match for Result
+     */
     public static match<Ok = any, Err = any, OkResult = any, ErrResult = any>(v: JSResult<Ok, Err>, onOk?: (o?: Ok) => OkResult, onErr?: (e?: Err) => ErrResult): OkResult | ErrResult | undefined {
         return v.is_ok ? onOk?.(v.ok().unwrap()) : onErr?.(v.err().unwrap())
     }
