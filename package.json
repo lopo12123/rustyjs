@@ -1,0 +1,11 @@
+{
+    "name": "rustyjs",
+    "version": "1.0.0",
+    "description": "Everything is rusted...",
+    "main": "index.js",
+    "repository": "https://github.com/lopo12123/rustyjs.git",
+    "author": "lopo<lopo@zju.edu.cn>",
+    "license": "MIT",
+    "scripts": {
+    }
+}
