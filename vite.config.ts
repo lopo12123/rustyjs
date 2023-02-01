@@ -10,6 +10,7 @@ const buildConfig: UserConfig = {
     plugins: [
         typescript({
             target: 'esnext',
+            module: 'esnext',
             rootDir: resolve('./lib'),
             declaration: true,
             declarationDir: resolve('./dist'),

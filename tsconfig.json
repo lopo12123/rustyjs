@@ -21,7 +21,6 @@
         "baseUrl": "."
     },
     "include": [
-        "lib",
-        "test"
+        "lib"
     ]
 }
