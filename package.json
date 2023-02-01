@@ -1,11 +1,19 @@
 {
     "name": "rustyjs",
+    "type": "module",
     "version": "1.0.0",
-    "description": "Everything is rusted...",
-    "main": "index.js",
-    "repository": "https://github.com/lopo12123/rustyjs.git",
     "author": "lopo<lopo@zju.edu.cn>",
+    "description": "Everything is rusted...",
+    "repository": "https://github.com/lopo12123/rustyjs.git",
     "license": "MIT",
     "scripts": {
+        "build": "tsc && vite build"
+    },
+    "devDependencies": {
+        "@rollup/plugin-typescript": "^11.0.0",
+        "@types/node": "^16.18.0",
+        "tslib": "^2.5.0",
+        "typescript": "^4.9.5",
+        "vite": "^4.0.4"
     }
 }
